@@ -19,8 +19,12 @@ st.text(" \n")
 
     # Get top headlines for Country USA
 @st.cache
-def get_headlines():
+def app():
     newsapi = NewsApiClient(api_key=api_key)
     top_articles = newsapi.get_top_headlines(country="us", language='en')
 
-    return top_articles 
+    return top_articles
+
+top_headlines = pd.DataFrame(app()['articles']) 
+
+st.write(top_headlines)
