@@ -16,7 +16,11 @@ import streamlit as st
 
 # st.markdown("# Top Headlines")
 def app():
-    st.button("Click to get headlines")
+    st.title('Data')
+
+    st.write("This is the `Data` page of the multi-page app.")
+
+    st.write("The following is the DataFrame of the `iris` dataset.")
 
 # Define a function to retrieve top headlines for Country USA
 
