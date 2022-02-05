@@ -14,6 +14,8 @@ import pdfkit
 import flair
 #news_api_key = os.getenv("news_api_key")
 
+st.markdown("# Top Headlines")
+
 # Define a function to retrieve top headlines for Country USA
 
 def top_headlines():
@@ -22,7 +24,7 @@ def top_headlines():
 
     return top_articles
 
-st.markdown("# Top Headlines")
+
 st.button("Click to get headlines")
 # if st.button("Click to get headlines"):
 #     top_articles = top_headlines()
