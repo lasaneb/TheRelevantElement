@@ -26,7 +26,7 @@ st.markdown("# Top Headlines")
 st.button("Click to get headlines")
 if st.button("Click to get headlines"):
     top_articles = top_headlines()
-    st.json(top_articles)
+    st.write(top_articles)
 
 #top_headlines = pd.DataFrame(app()['articles']) 
 
