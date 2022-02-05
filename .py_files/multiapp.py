@@ -31,7 +31,7 @@ class MultiApp:
         func:
             the python function to render this app.
         title:
-            title of the app. Appears in the dropdown in the sidebar.
+            title of the app. Appears in the dropdown or in the sidebar.
         """
         self.apps.append({
             "title": title,
