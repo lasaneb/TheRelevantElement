@@ -23,6 +23,7 @@ def top_headlines():
     return top_articles
 
 st.markdown("# Top Headlines")
+st.button("Click to get headlines")
 if st.button("Click to get headlines"):
     top_articles = top_headlines()
     st.json(top_articles)
