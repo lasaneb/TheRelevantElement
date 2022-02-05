@@ -18,7 +18,7 @@ st.markdown("Some Text Here")
 
 relevant_element.add_app("Home", home.app)
 relevant_element.add_app("data", data.app)
-relevant_element.add_app("Headlines", data.app)
+relevant_element.add_app("Headlines", headlines.app)
 
 # relevant_element.add_app("Wombo Art", wombo_art_using_helium_driver.app)
 
