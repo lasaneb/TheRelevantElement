@@ -17,8 +17,8 @@ st.markdown("Some Text Here")
 # Add all your applications here as tabs
 
 relevant_element.add_app("Home", home.app)
-relevant_element.add_app("data", data.app)
-relevant_element.add_app("headlines", top_headlines.app)
+# relevant_element.add_app("data", data.app)
+# relevant_element.add_app("headlines", top_headlines.app)
 # relevant_element.add_app("Wombo Art", wombo_art_using_helium_driver.app)
 
 
