@@ -21,7 +21,7 @@ st.button("Click to get headlines")
     # Get top headlines for Country USA
 @st.cache
 def app():
-    newsapi = NewsApiClient(api_key="news_api_key")
+    newsapi = NewsApiClient(api_key=st.secrets["news_api_key"])
     top_articles = newsapi.get_top_headlines(country="us", language='en')
 
     return top_articles
