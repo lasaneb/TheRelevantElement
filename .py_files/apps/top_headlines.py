@@ -14,18 +14,19 @@ import pdfkit
 import flair
 #news_api_key = os.getenv("news_api_key")
 
-st.markdown("# Top Headlines")
-st.button("Click to get headlines")
+# Define a function to retrieve top headlines for Country USA
 
-
-    # Get top headlines for Country USA
-@st.cache
-def app():
+def top_headlines():
     newsapi = NewsApiClient(api_key=st.secrets["news_api_key"])
     top_articles = newsapi.get_top_headlines(country="us", language='en')
 
     return top_articles
 
-top_headlines = pd.DataFrame(app()['articles']) 
+st.markdown("# Top Headlines")
+if st.button("Click to get headlines"):
+    top_articles = top_headlines()
+    st.json(top_articles)
 
-st.write(top_headlines)
+#top_headlines = pd.DataFrame(app()['articles']) 
+
+#st.write(top_headlines)
