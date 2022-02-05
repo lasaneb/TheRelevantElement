@@ -4,7 +4,8 @@ from helium import *
 import shutil
 import time
 from selenium import webdriver
-from newsapi import NewsApiClient
+# from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 from multiapp import MultiApp
 
 from apps import home, data, top_headlines #wombo_art_using_helium_driver # import your app modules here
