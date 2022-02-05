@@ -6,7 +6,8 @@ import streamlit as st
 from dataclasses import dataclass
 from typing import Any, List
 import os
-from newsapi import NewsApiClient
+# from newsapi import NewsApiClient
+from newsapi.newsapi_client import NewsApiClient
 from datetime import date, timedelta
 import pandas as pd
 import pdfkit
