@@ -12,7 +12,7 @@ from datetime import date, timedelta
 import pandas as pd
 import pdfkit
 import flair
-news_api_key = os.getenv("news_api_key")
+#news_api_key = os.getenv("news_api_key")
 
 st.markdown("# Top Headlines")
 st.button("Click to get headlines")
