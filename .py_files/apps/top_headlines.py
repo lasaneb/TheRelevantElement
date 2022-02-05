@@ -15,8 +15,8 @@ import flair
 api_key = os.getenv("news_api_key")
 
 st.markdown("# Top Headlines")
-st.button("## Click to get headlines")
-st.text(" \n")
+st.button("Click to get headlines")
+
 
     # Get top headlines for Country USA
 @st.cache
