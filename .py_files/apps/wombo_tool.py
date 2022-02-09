@@ -6,6 +6,8 @@ init(autoreset=True)
 
 if st.button("Get Art"):
 
+    
+
     def generate(title: str):
         os.system("cls")
         print(f"{Fore.LIGHTBLUE_EX}Retrieving Auth Token.")
