@@ -1,11 +1,14 @@
 import requests, os
 from colorama import Fore, init
+import streamlit as st
 
 init(autoreset=True)
 
-def generate(title: str):
-    os.system("cls")
-    print(f"{Fore.LIGHTBLUE_EX}Retrieving Auth Token.")
+if st.button("Get Art"):
+
+    def generate(title: str):
+        os.system("cls")
+        print(f"{Fore.LIGHTBLUE_EX}Retrieving Auth Token.")
 
     getAuthToken = requests.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDCvp5MTJLUdtBYEKYWXJrlLzu1zuKM6Xw", headers={
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
