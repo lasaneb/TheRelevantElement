@@ -4,4 +4,4 @@ def app():
     st.title('Art Gallery')
 
 
-    st.write('This is where we will get headlines.')
+    st.write('Enjoy this art gallery!')
