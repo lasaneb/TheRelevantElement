@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
 from helium import *
-import shutil
-import time
 from selenium import webdriver
-# from newsapi import NewsApiClient
+#from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
 from multiapp import MultiApp
 
