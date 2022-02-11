@@ -1,9 +1,9 @@
 import streamlit as st
-import pandas as pd
-from helium import *
-from selenium import webdriver
+#import pandas as pd
+#from helium import *
+#from selenium import webdriver
 #from newsapi import NewsApiClient
-from newsapi.newsapi_client import NewsApiClient
+#from newsapi.newsapi_client import NewsApiClient
 from multiapp import MultiApp
 
 from apps import home, headlines, scan_for_articles, speech_recognition_and_search
