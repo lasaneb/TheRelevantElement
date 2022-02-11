@@ -1,0 +1,133 @@
+import requests, os
+
+import streamlit as st
+
+
+
+if st.button("Get Art"):
+
+    
+
+    def generate(title: str):
+        os.system("cls")
+        
+
+        getAuthToken = requests.post("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDCvp5MTJLUdtBYEKYWXJrlLzu1zuKM6Xw", headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+        "Accept": "*/*",
+        "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "content-type": "application/json",
+        "x-client-version": "Firefox/JsCore/9.1.2/FirebaseCore-web",
+        "Origin": "https://app.wombo.art",
+        "DNT": "1",
+        "Connection": "keep-alive",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "cross-site",
+        "TE": "trailers"
+        }, json={
+            "returnSecureToken": "true"
+        }).json()
+
+        authToken = getAuthToken["idToken"]
+
+        os.system("cls")
+        
+
+        initTask = requests.post("https://app.wombo.art/api/tasks", headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+        "Accept": "*/*",
+        "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Referer": "https://app.wombo.art/",
+        "Authorization": f"bearer {authToken}",
+        "Content-Type": "text/plain;charset=UTF-8",
+        "Origin": "https://app.wombo.art",
+        "Connection": "keep-alive",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        "TE": "trailers"
+        }, json={
+        "premium": False
+        }).json()
+
+        taskID = initTask["id"]
+
+        os.system("cls")
+        
+
+        initCreateTask = requests.put(f"https://app.wombo.art/api/tasks/{taskID}", headers={
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+        "Accept": "*/*",
+        "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Referer": "https://app.wombo.art/",
+        "Authorization": f"bearer {authToken}",
+        "Content-Type": "text/plain;charset=UTF-8",
+        "Origin": "https://app.wombo.art",
+        "DNT": "1",
+        "Connection": "keep-alive",
+        "Cookie": "_ga_BRH9PT4RKM=GS1.1.1644347760.1.0.1644347820.0; _ga=GA1.1.1610806426.1644347761",
+        "Sec-Fetch-Dest": "empty",
+        "Sec-Fetch-Mode": "cors",
+        "Sec-Fetch-Site": "same-origin",
+        "TE": "trailers"
+        }, json={
+        "input_spec": {
+            "prompt": title,
+            "style": 18,
+            "display_freq": 10
+        }
+    })
+
+        os.system("cls")
+        
+
+        createArt = {}
+        createArt["state"] = "generating"
+        while createArt["state"] == "generating":
+            createArt = requests.get(f"https://app.wombo.art/api/tasks/{taskID}", headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0",
+            "Accept": "*/*",
+            "Accept-Language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Referer": "https://app.wombo.art/",
+            "Authorization": f"bearer {authToken}",
+            "DNT": "1",
+            "Connection": "keep-alive",
+            "Cookie": "_ga_BRH9PT4RKM=GS1.1.1644347760.1.0.1644347820.0; _ga=GA1.1.1610806426.1644347761",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-origin",
+            "TE": "trailers"
+        }).json()
+
+            os.system("cls")
+            
+
+        artURL = createArt["result"]["final"]
+
+        if not os.path.isdir("results/"):
+            os.makedirs("results/")
+    
+        with open(f"results/{taskID}.png", "wb") as file:
+            file.write(requests.get(artURL).content)
+            file.close()
+
+        os.system(f"explorer {os.getcwd()}\\results\{taskID}.png")
+
+        os.system("cls")
+        
+
+        input()
+
+    if __name__ == "__main__":
+        try:
+            os.system("cls")
+            title = input(f"{}Please enter your art title.")
+
+            generate(title)
+        except KeyboardInterrupt:
+            exit()
