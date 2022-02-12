@@ -19,6 +19,12 @@ def app():
     top_headlines_df = pd.DataFrame.from_dict(top_headlines()['articles'])
     top_headlines_df["source"] = top_headlines_df["source"].apply(lambda x: x['name'])
 
+    def make_clickable(url):
+        return f'<a target="_blank" href="{url}">{url}</a>'
+
+    top_headlines_df.style.format({'url': make_clickable})
+
+
 ##############################################################################################################
 # Streamlit Integration #
 ##############################################################################################################
