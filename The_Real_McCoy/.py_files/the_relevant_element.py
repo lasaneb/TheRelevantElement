@@ -6,7 +6,7 @@ import streamlit as st
 #from newsapi.newsapi_client import NewsApiClient
 from multiapp import MultiApp
 
-from apps import home, headlines, scan_for_articles, speech_recognition_and_search, wombo_tool
+from apps import home, headlines, scan_for_articles, speech_recognition_and_search, wombo_tool, inspiring_quotes
 
 relevant_element = MultiApp()
 
@@ -21,6 +21,7 @@ relevant_element.add_app("Headlines", headlines.app)
 relevant_element.add_app("Scan for Articles", scan_for_articles.app)
 relevant_element.add_app("Speech to Search", speech_recognition_and_search.app)
 relevant_element.add_app("Art with Wombo", wombo_tool.generate)
+relevant_element.add_app("Inspiring Quotes", inspiring_quotes.app)
 
 # The main app
 relevant_element.run()
