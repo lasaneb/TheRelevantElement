@@ -121,8 +121,8 @@ def generate(title: str):
 if __name__ == "__main__":
     try:
         os.system("cls")
-        title = input(f"{Fore.LIGHTYELLOW_EX}Please enter your art title.\n\n{Fore.RESET}~# ")
+        title = "Blood Red"
 
-        generate(title)
+        generate("Blood Red")
     except KeyboardInterrupt:
         exit()
