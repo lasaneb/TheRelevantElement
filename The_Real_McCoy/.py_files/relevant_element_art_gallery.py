@@ -1,7 +1,6 @@
 
 
 from PIL import Image
-import glob
 import streamlit as st
 from itertools import cycle
 import time

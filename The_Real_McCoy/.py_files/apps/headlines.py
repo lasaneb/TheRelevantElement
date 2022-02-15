@@ -7,6 +7,7 @@ from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
 news_api_key = os.getenv("news_api_key")
 
+
 def app():
 
     def top_headlines():
@@ -19,10 +20,7 @@ def app():
     top_headlines_df = pd.DataFrame.from_dict(top_headlines()['articles'])
     top_headlines_df["source"] = top_headlines_df["source"].apply(lambda x: x['name'])
 
-    def make_clickable(url):
-        return f'<a target="_blank" href="{url}">{url}</a>'
 
-    top_headlines_df.style.format({'url': make_clickable})
 
 
 ##############################################################################################################
@@ -31,12 +29,17 @@ def app():
 
     st.title('Headlines')
 
+   
 
-    st.write('This is where we will get headlines.')
-
-    if st.button('Click here to get headlines'):
-        st.spinner('Getting Headlines...')
-        time.sleep(4)    
-        st.write('Here are the headlines:')
-        st.write(top_headlines_df)    
+    if st.button('Click here to get headlines!'):
+        with st.spinner('Getting Headlines...'):
+            time.sleep(4)    
+            st.write('Here are the Headlines!')
+            # textPlaceholder = st.empty()
+            index = 0
+            textPlaceholder = st.empty()
+            for row in top_headlines_df['title']:
+                textPlaceholder.text(top_headlines_df['title'][index])
+                index += 1
+            # st.write(top_headlines_df)    
 
