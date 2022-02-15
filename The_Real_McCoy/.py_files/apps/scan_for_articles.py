@@ -45,8 +45,6 @@ keywords = ['Helping', 'Forgiveness']
        
 all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword","article_sentiment", "article_confidence"])
 
-# keywords = ['Helping', 'Forgiveness']
-
 for word in keywords:
     relevant_articles = scan_for_articles(word)
     df = pd.DataFrame(relevant_articles['articles'])
