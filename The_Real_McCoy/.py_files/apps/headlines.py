@@ -35,11 +35,12 @@ def app():
         with st.spinner('Getting Headlines...'):
             time.sleep(4)    
             st.write('Here are the Headlines!')
-            # textPlaceholder = st.empty()
-            index = 0
-            textPlaceholder = st.empty()
-            for row in top_headlines_df['title']:
-                textPlaceholder.text(top_headlines_df['title'][index])
-                index += 1
-            # st.write(top_headlines_df)    
+            st.write(top_headlines_df)
+
+    options = st.multiselect(
+        'Choose your Headlines',
+     ['Green', 'Yellow', 'Red', 'Blue'],
+     ['Yellow', 'Red'])
+
+st.write('You selected:', options)    
 
