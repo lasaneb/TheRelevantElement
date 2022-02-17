@@ -37,10 +37,10 @@ def app():
             st.write('Here are the Headlines!')
             st.write(top_headlines_df)
 
-    options = st.multiselect(
+        options = st.multiselect(
         'Choose your Headlines',
      ['Green', 'Yellow', 'Red', 'Blue'],
      ['Yellow', 'Red'])
 
-st.write('You selected:', options)    
+    st.write('You selected:', options)    
 

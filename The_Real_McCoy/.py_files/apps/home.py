@@ -13,7 +13,8 @@ def app():
 
     st.title('Home')
 
-    st.write('With this app we will do some cool stuff.')
+    st.markdown("Welcome to **The Relevant Element**")
+    st.markdown
 
     def top_headlines():
         news_api_key = os.getenv("news_api_key")
@@ -25,29 +26,8 @@ def app():
     top_headlines_df = pd.DataFrame.from_dict(top_headlines()['articles'])
     top_headlines_df["source"] = top_headlines_df["source"].apply(lambda x: x['name'])
 
-##############################################################################################################
-# Streamlit Integration #
-##############################################################################################################
 
-    st.title('Headlines')
-
-    if st.button('Click here to get headlines!'):
-        with st.spinner('Getting Headlines...'):
-            time.sleep(4)    
-            st.write('Here are the Headlines!')
-            # textPlaceholder = st.empty()
-            index = 0
-            textPlaceholder = st.empty()
-            for row in top_headlines_df['title']:
-                textPlaceholder.text(top_headlines_df['title'][index])
-                time.sleep(20)
-                index += 1
-            # st.write(top_headlines_df)
-
-# Image Carosel
-
-def main():
-
+    
     images = ["https://ipfs.io/ipfs/QmeTuPqzFWosFkCycvoN29jkfbMXDGWMMLMBMnStYXMW5W?filename=Dream.jpg",
               "https://ipfs.io/ipfs/QmNZAoco2BLbTnpqyBMmJ2CkH3ncoMbJofKWfRC9jX9UCy?filename=everything_is_awesome.jpg",
               "https://ipfs.io/ipfs/QmR1UCsrPNAUPKPtB133VtUMkyhTFLaqepmLnqkfahrHWU?filename=Family_and_Love.jpg",
@@ -57,6 +37,35 @@ def main():
 
     captions = ["Dream", "Everything is Awesome", "Family and Love", "The hot sauce is mine", "Thief in the night"]
 
+
+
+
+##############################################################################################################
+# Streamlit Integration #
+##############################################################################################################
+
+
+    st.title('Enjoy the Show!')
+
+    if st.button('Start!'):
+            st.write("Launching The Relevant Element...")
+            time.sleep(3)
+            st.spinner("")
+
+            my_bar = st.progress(0)
+
+            for percent_complete in range(100):
+                time.sleep(0.05)
+                my_bar.progress(percent_complete + 1)
+
+            st.write('Here are the top 5 Headlines!')
+            index = 0
+            for row in top_headlines_df['title']:
+                st.write(top_headlines_df['title'][index])
+                time.sleep(1)
+                index += 1
+        
+                
 
 
 

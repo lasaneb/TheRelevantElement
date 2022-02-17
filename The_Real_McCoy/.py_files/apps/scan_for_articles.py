@@ -19,7 +19,7 @@ def app():
     st.write('Scan for articles that will contain useable content.')
 
 def scan_for_articles(keyword):
-    newsapi = NewsApiClient(api_key=news_api_key)
+    newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
     relevant_articles = newsapi.get_everything(q=keyword,
                                         language='en', 
                                         sort_by='relevancy', 
@@ -41,7 +41,7 @@ def scan_for_articles(keyword):
 #             st.write("Submitted!")
 
 
-keywords = ['Helping', 'Forgiveness']
+keywords = ['Helping', 'Forgiveness', 'Positive']
        
 all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword","article_sentiment", "article_confidence"])
 
