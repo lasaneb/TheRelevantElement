@@ -2,7 +2,6 @@
 
 import streamlit as st
 import speech_recognition as sr
-import pyaudio 
 from gtts import gTTS
 
 
@@ -35,6 +34,8 @@ def app():
 
             return said
     
-    element = get_audio()
+        element = get_audio()
     
-    show_elements.append(element)
+        show_elements.append(element)
+
+    print(show_elements)

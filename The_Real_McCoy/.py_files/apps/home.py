@@ -58,7 +58,7 @@ def app():
                 time.sleep(0.05)
                 my_bar.progress(percent_complete + 1)
 
-            st.write('Here are the top 5 Headlines!')
+            st.write('Here are the top Headlines!')
             index = 0
             for row in top_headlines_df['title']:
                 st.write(top_headlines_df['title'][index])
