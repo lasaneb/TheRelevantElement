@@ -18,57 +18,45 @@ def app():
 
     st.write('Scan for articles that will contain useable content.')
 
-def scan_for_articles(keyword):
-    newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
-    relevant_articles = newsapi.get_everything(q=keyword,
+    def scan_for_articles(keyword):
+        newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
+        relevant_articles = newsapi.get_everything(q=keyword,
                                         language='en', 
                                         sort_by='relevancy', 
                                         page_size=100)
-    return relevant_articles
-
-# with st.form('keywords'):
-#     keywords = st.text_input('Enter up to 3 keywords separated by commas')
-#     keywords = keywords.split(',')
-#     if len(keywords) > 3:
-#         st.error('Uh Oh! You entered too many keywords!')
-#         st.image("C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//Troll.jpg")
-#         if st.button("Click here to bo back"):
-#             helium.start_chrome("https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley")
-        
-#     else:
-#         submitted = st.form_submit_button('Submit')
-#         if submitted:
-#             st.write("Submitted!")
+        return relevant_articles
 
 
-keywords = ['Helping', 'Forgiveness', 'Positive']
-       
-all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword","article_sentiment", "article_confidence"])
-
-for word in keywords:
-    relevant_articles = scan_for_articles(word)
-    df = pd.DataFrame(relevant_articles['articles'])
-    df["keyword"] = word
-    all_relevant_articles = pd.concat([all_relevant_articles, df],ignore_index=True)
-
-# Clean the data in the source column
-#     
-all_relevant_articles["source"] = all_relevant_articles["source"].apply(lambda x: x['name'])
 
 
-article_sentiment_model = flair.models.TextClassifier.load('en-sentiment')
+        all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword","article_sentiment", "article_confidence"])
 
-# Initialize lists
+        keywords = ['Helping', 'Forgiveness', 'Positive']
 
-article_sentiment = []
-article_confidence = []
+        for word in keywords:
+            relevant_articles = scan_for_articles(word)
+            df = pd.DataFrame(relevant_articles['articles'])
+            df["keyword"] = word
+            all_relevant_articles = pd.concat([all_relevant_articles, df],ignore_index=True)
+
+        # Clean the data in the source column
+     
+        all_relevant_articles["source"] = all_relevant_articles["source"].apply(lambda x: x['name'])
 
 
-# Run Sentiment analysis on collected news sentences
+        article_sentiment_model = flair.models.TextClassifier.load('en-sentiment')
+
+    # Initialize lists
+
+        article_sentiment = []
+        article_confidence = []
 
 
-for sentence in all_relevant_articles["description"]:
-        if sentence.strip() == "":
+        # Run Sentiment analysis on collected news sentences
+
+
+        for sentence in all_relevant_articles["description"]:
+            if sentence.strip() == "":
                 article_confidence.append("")
                 article_sentiment.append("")
                 
@@ -80,5 +68,5 @@ for sentence in all_relevant_articles["description"]:
 
 # Add Results to Dataframe
 
-all_relevant_articles['sentiment'] = article_sentiment
-all_relevant_articles['confidence'] = article_confidence
+        all_relevant_articles['sentiment'] = article_sentiment
+        all_relevant_articles['confidence'] = article_confidence

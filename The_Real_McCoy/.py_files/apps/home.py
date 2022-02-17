@@ -44,9 +44,6 @@ def app():
 # Streamlit Integration #
 ##############################################################################################################
 
-
-    st.title('Enjoy the Show!')
-
     if st.button('Start!'):
             st.write("Launching The Relevant Element...")
             time.sleep(3)
@@ -58,12 +55,15 @@ def app():
                 time.sleep(0.05)
                 my_bar.progress(percent_complete + 1)
 
-            st.write('Here are the top Headlines!')
-            index = 0
+            st.write('Here are some Headlines!')
+
+            index = 0   
             for row in top_headlines_df['title']:
                 st.write(top_headlines_df['title'][index])
                 time.sleep(1)
                 index += 1
+                if index == 5: # Break the loops after 5 articles are displayed
+                    break
         
                 
 

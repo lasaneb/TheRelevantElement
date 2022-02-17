@@ -4,11 +4,13 @@ import pandas as pd
 from random import randint
 import streamlit as st
 
-@st.cache
+
 def app():
     st.title('Inspiring Quotes')
 
-    st.write('In this app we will inspire you to do cool stuff.')
+    
+
+    st.write('A life spent making mistakes is not only more honourable but more useful than a life spent in doing nothing. - Bernard Shaw.')
 
 #Get inspiring Quotes
     url = "https://inspiring-quotes.p.rapidapi.com/multiple"

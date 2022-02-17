@@ -9,7 +9,6 @@ news_api_key = os.getenv("news_api_key")
 
 
 def app():
-
     def top_headlines():
         news_api_key = os.getenv("news_api_key")
         newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
@@ -29,18 +28,16 @@ def app():
 
     st.title('Headlines')
 
-   
-
     if st.button('Click here to get headlines!'):
         with st.spinner('Getting Headlines...'):
             time.sleep(4)    
             st.write('Here are the Headlines!')
             st.write(top_headlines_df)
 
-        options = st.multiselect(
-        'Choose your Headlines',
-     ['Green', 'Yellow', 'Red', 'Blue'],
-     ['Yellow', 'Red'])
+            options = st.multiselect(
+            'Choose your Headlines',
+        ['Green', 'Yellow', 'Red', 'Blue'],
+        ['Yellow', 'Red'])
 
-    st.write('You selected:', options)    
+            st.write('You selected:', options)    
 

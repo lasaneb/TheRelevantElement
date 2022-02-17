@@ -8,10 +8,12 @@ def app():
     st.write('Enjoy this art gallery!')
 
 
-    
-    Images = "https://ipfs.io/ipfs/Qmd8xdaYVdPEwbtqRwAizfEcTaz35iS2XAYkVYm5esQdXV"
 
-    caption = ["Dream", "Love"] 
+    col1, col2, col3 = st.columns(4)
+    image_list = []
+    for filename in glob.glob('C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//WomboArtWorks//*.jpg'): # Gets only jpg files
+        im=Image.open(filename)
+        image_list.append(im)
 
-    st.image(Images, width=350)
+    st.image(image_list, width=300)
 
