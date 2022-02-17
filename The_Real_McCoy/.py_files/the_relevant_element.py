@@ -19,7 +19,7 @@ relevant_element.add_app("Home", home.app)
 relevant_element.add_app("Headlines", headlines.app)
 relevant_element.add_app("Scan for Articles", scan_for_articles.app)
 relevant_element.add_app("Speech to Search", speech_recognition_and_search.app)
-relevant_element.add_app("Art with Wombo", wombo_tool.generate)
+relevant_element.add_app("Generate Art with Wombo", wombo_tool.generate)
 relevant_element.add_app("Inspiring Quotes", inspiring_quotes.app)
 relevant_element.add_app("Donate!", donate_to_relevant_element.app)
 
