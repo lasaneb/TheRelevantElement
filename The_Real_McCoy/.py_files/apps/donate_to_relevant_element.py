@@ -47,7 +47,7 @@ def app():
     accounts = w3.eth.accounts
     address = st.selectbox("Select Account", options=accounts)
     # Request input in Ether # The amount is actually in wei initially
-    wei_amount = st.number_input("Amount to send in Wei", min_value=0, max_value=1000000000)
+    eth_amount = (st.number_input("Amount to send in Ether", min_value=0, max_value=100)) * 10**18 #<-- convert to wei
     # Convert to Ether
     #eth_amount = w3.fromWei(wei_amount,'ether')
 
@@ -58,7 +58,7 @@ def app():
 
 
         tx_hash = contract.functions.deposit(
-        ).transact({'from': address, 'value' : wei_amount, 'gas': 1000000})
+        ).transact({'from': address, 'value' : eth_amount, 'gas': 1000000})
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
         st.write("Transaction receipt mined:")
         st.write(dict(receipt))
