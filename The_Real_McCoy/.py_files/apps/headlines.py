@@ -19,6 +19,7 @@ def app():
 
     top_headlines_df = pd.DataFrame.from_dict(top_headlines()['articles'])
     top_headlines_df["source"] = top_headlines_df["source"].apply(lambda x: x['name'])
+    summary_top_headlines_df = top_headlines_df.loc[:, ['source', 'title', 'description']]
 
 
 
@@ -29,15 +30,20 @@ def app():
 
     st.title('Headlines')
 
-    if st.button('Click here to get headlines!'):
+    if st.button('Click here to see all headlines!'):
         with st.spinner('Getting Headlines...'):
             time.sleep(4)    
             st.write('Here are the Headlines!')
-            st.write(top_headlines_df)
+            st.write(summary_top_headlines_df)
 
     options = st.multiselect(
             'Choose your Headlines',
-        [top_headlines_df['title'][i] for i in range(len(top_headlines_df))],
+        [summary_top_headlines_df['title'][i] for i in range(len(summary_top_headlines_df))],
         [])
 
-    st.write('You selected:', options) 
+    st.write('You selected:', options)
+
+    if st.button('Click here to open in browser!'):
+        with st.spinner('Opening Headlines...'):
+            time.sleep(4)    
+
