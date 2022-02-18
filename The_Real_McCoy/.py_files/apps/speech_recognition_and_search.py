@@ -3,6 +3,8 @@
 import streamlit as st
 import speech_recognition as sr
 from gtts import gTTS
+from helium import *
+import time
 
 
 
@@ -38,4 +40,12 @@ def app():
     
         show_elements.append(element)
 
-    print(show_elements)
+    st.write("The Current Element")
+    st.write(element)
+
+    if st.button('Online Search'):
+        st.spinner('Searching for' + element)
+        time.sleep(3)
+        helium.start_chrome('https://www.google.com/search?q=' + element)
+        
+

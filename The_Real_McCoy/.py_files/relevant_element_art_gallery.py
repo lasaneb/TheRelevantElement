@@ -15,8 +15,7 @@ def app():
     st.write('Enjoy this art gallery!')
 
 relevant_element.add_app("Home", art_gallery.app)
-# relevant_element.add_app("Home", art_with_wombo.app)
-
+relevant_element.add_app("Generate Art with Wombo", wombo_tool.generate)
 
 
 # The main app
