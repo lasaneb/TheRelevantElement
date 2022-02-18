@@ -29,7 +29,7 @@ def app():
 
 
 
-        all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword","article_sentiment", "article_confidence"])
+        all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword", "article_sentiment", "article_confidence"])
 
         keywords = ['Helping', 'Forgiveness', 'Positive']
 

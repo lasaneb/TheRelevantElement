@@ -9,6 +9,7 @@ news_api_key = os.getenv("news_api_key")
 
 
 def app():
+    @st.cache(allow_output_mutation=True)
     def top_headlines():
         news_api_key = os.getenv("news_api_key")
         newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
@@ -34,10 +35,9 @@ def app():
             st.write('Here are the Headlines!')
             st.write(top_headlines_df)
 
-            options = st.multiselect(
+    options = st.multiselect(
             'Choose your Headlines',
-        ['Green', 'Yellow', 'Red', 'Blue'],
-        ['Yellow', 'Red'])
+        [top_headlines_df['title'][i] for i in range(len(top_headlines_df))],
+        [])
 
-            st.write('You selected:', options)    
-
+    st.write('You selected:', options) 
