@@ -8,6 +8,9 @@ import time
 from fpdf import FPDF
 import base64
 
+    # def search_for_element(search_term):
+    #     st.spinner('Searching for' + search_term)
+    #     helium.start_chrome('https://www.google.com/search?q=' + search_term)
 
 
 st.title('Speech Recognition')
@@ -37,9 +40,8 @@ if st.button('Start Listening and Search'):
 
             return said
     
-        element = get_audio() # get the audio from the user and convert to text
+        element = get_audio()
     
-        # append the text to the list, run a google search with the text, and display a .gif while the search is running
         show_elements.append(element)
         st.write("The Current Element")
         st.write('Searching for' + element)
@@ -59,9 +61,14 @@ if st.button('Start Listening and Search'):
         # if st.button("Start Over"):
         #     helium.kill_browser() 
 
-        time.sleep(5)
+        time.sleep(2)
         helium.start_chrome('https://www.google.com/search?q=' + element)
 
-        
+        # if st.button("Start Over"):
+        #     helium.kill_browser()        
 
+    #     if st.button('Search Online'):
+    #         helium.start_chrome('https://www.google.com')
+    # #search_for_element(element)
+        
 
