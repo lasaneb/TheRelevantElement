@@ -8,20 +8,20 @@ import time
 from fpdf import FPDF
 import base64
 
+def app():
+
+    st.title('Speech Recognition')
 
 
-st.title('Speech Recognition')
+    st.write('Speech recognition software is used to capture speech and search for top results')
 
-
-st.write('Speech recognition software is used to capture speech and search for top results')
-
-show_elements = []
+    show_elements = []
 
     # Initialize the speech recognition engine
 
 # Set the microphone to listen to the user and convert the audio to text; no set time limit
 
-if st.button('Start Listening and Search'):
+    if st.button('Start Listening and Search'):
         def get_audio():
             r = sr.Recognizer()
             with sr.Microphone() as source:
@@ -42,7 +42,7 @@ if st.button('Start Listening and Search'):
         # append the text to the list, run a google search with the text, and display a .gif while the search is running
         show_elements.append(element)
         st.write("The Current Element")
-        st.write('Searching for' + element)
+        st.write('Searching for ' + element)
         # Add a button to start over
         if st.button("Start Over"):
             helium.kill_browser() 

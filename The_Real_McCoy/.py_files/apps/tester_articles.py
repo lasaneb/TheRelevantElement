@@ -14,17 +14,25 @@ from pathlib import Path
 ##############################################################################################################
 # # Initialize columns
 #     col1, col2 = st.columns(2)
+
+@st.cache
+def get_data():
+    csv = Path("all_relevant_articles.csv")
+    summary_top_headlines_df = pd.read_csv(csv)
+    summary_top_headlines_df_title_and_url = summary_top_headlines_df[['title', 'url']]
+    return summary_top_headlines_df_title_and_url
+    
 csv = Path("all_relevant_articles.csv")
 
 summary_top_headlines_df = pd.read_csv(csv)
 summary_top_headlines_df_title_and_url = summary_top_headlines_df[['title', 'url']]
 
-st.title('Headlines')
+st.title('Articles')
 
 if st.button('Click here to see all headlines!'):
-        with st.spinner('Getting Headlines...'):
+        with st.spinner('Getting Articles...'):
             time.sleep(4)    
-            st.write('Here are the Headlines!')
+            st.write('Here are the Articles!')
             st.write(summary_top_headlines_df)
 
 

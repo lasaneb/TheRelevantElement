@@ -6,7 +6,8 @@ import streamlit as st
 from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
 from selenium import webdriver
-import selenium
+from pathlib import Path
+from selenium.webdriver.chrome.options import Options
 news_api_key = os.getenv("news_api_key")
 
 
@@ -21,10 +22,9 @@ def app():
 
     top_headlines_df = pd.DataFrame.from_dict(top_headlines()['articles'])
     top_headlines_df["source"] = top_headlines_df["source"].apply(lambda x: x['name'])
-    summary_top_headlines_df = top_headlines_df.loc[:, ['source', 'title', 'description', 'url']]
-
-
-
+    summary_top_headlines_df_title_and_url = top_headlines_df[['title', 'url']]
+    summary_top_headlines_df_title_and_url.set_index('title', inplace=True, drop=False)
+    
 
 ##############################################################################################################
 # Streamlit Integration #
@@ -38,40 +38,51 @@ def app():
         with st.spinner('Getting Headlines...'):
             time.sleep(4)    
             st.write('Here are the Headlines!')
-            st.write(summary_top_headlines_df)
+            st.write(top_headlines_df)
 
     chosen_headlines = st.multiselect(
             'Choose your Headlines',
-        [summary_top_headlines_df['title'][i] for i in range(len(summary_top_headlines_df))],
-        [])
+            summary_top_headlines_df_title_and_url['title'],
+    [])
 
     st.write('You selected:', chosen_headlines)
 
     if st.button('Click here to open in browser!'):
         with st.spinner('Opening Headlines...'):
-            # Create webdriver
-            driver = webdriver.Chrome()
-            # Assign URL
-            first_url = summary_top_headlines_df.loc[summary_top_headlines_df['title'] == chosen_headlines[0], 'url']
-  
-            # New Url
-            new_urls = [chosen_headlines[1:]]
+        # Create webdriver
+        #driver = webdriver.Chrome()
+        
+            options = Options()
+            options.page_load_strategy = 'eager'
+            driver = webdriver.Chrome(options=options)
 
-            while True:
-                # Opening first url
-                driver.get(first_url)
-  
-            #Open a new window
-            driver.execute_script("window.open('');")
-  
-            #Switch to the new window and open new URL
-            driver.switch_to.window(driver.window_handles[1])
-            driver.get(new_urls[0])
 
+        # Assign URL
+        #first_url = chosen_headlines[0]
+        # first_url = summary_top_headlines_df_title_and_url.loc[chosen_headlines[0]]['url']
+        # driver.get(first_url)
+        index = 0
+        for item in chosen_headlines:
+            url = summary_top_headlines_df_title_and_url.loc[item]['url']
+            # Open new browser and go to first URL
             driver.execute_script("window.open('');")
-            driver.switch_to.window(driver.window_handles[2])
-            driver.get(new_urls[1])
-            # time.sleep(4)
+            #Open a new tab
+            driver.switch_to.window(driver.window_handles[index])
+            driver.get(url)
+            index += 1
+            
+  
+            # #Open a new window
+            # driver.execute_script("window.open('');")
+  
+            # #Switch to the new window and open new URL
+            # driver.switch_to.window(driver.window_handles[1])
+            # driver.get(new_urls[0])
+
+            # driver.execute_script("window.open('');")
+            # driver.switch_to.window(driver.window_handles[2])
+            # driver.get(new_urls[1])
+            # # time.sleep(4)
 
   
 
