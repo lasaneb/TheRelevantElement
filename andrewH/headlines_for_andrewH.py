@@ -1,18 +1,17 @@
-
 import os
 import pandas as pd
 import time
 import streamlit as st
 from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
-news_api_key = os.getenv("news_api_key")
+news_api_key = os.getenv("NEWS_API_KEY")
 
 
 def app():
     @st.cache(allow_output_mutation=True)
     def top_headlines():
-        news_api_key = os.getenv("news_api_key")
-        newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
+        news_api_key = os.getenv("NEWS_API_KEY")
+        newsapi = NewsApiClient(api_key="")
         top_articles = newsapi.get_top_headlines(country="us", language='en')
 
         return top_articles
