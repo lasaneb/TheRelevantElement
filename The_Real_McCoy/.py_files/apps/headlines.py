@@ -24,6 +24,7 @@ def app():
     top_headlines_df["source"] = top_headlines_df["source"].apply(lambda x: x['name'])
     summary_top_headlines_df_title_and_url = top_headlines_df[['title', 'url']]
     summary_top_headlines_df_title_and_url.set_index('title', inplace=True, drop=False)
+    top_headlines_df = top_headlines_df[['source', 'title']]
     
 
 ##############################################################################################################
@@ -38,7 +39,7 @@ def app():
         with st.spinner('Getting Headlines...'):
             time.sleep(4)    
             st.write('Here are the Headlines!')
-            st.write(top_headlines_df)
+            st.dataframe(top_headlines_df)
 
     chosen_headlines = st.multiselect(
             'Choose your Headlines',
@@ -54,6 +55,7 @@ def app():
         
             options = Options()
             options.page_load_strategy = 'eager'
+            options.add_experimental_option("detach", True)
             driver = webdriver.Chrome(options=options)
 
 

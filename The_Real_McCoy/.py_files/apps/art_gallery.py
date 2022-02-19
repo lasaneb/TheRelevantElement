@@ -17,13 +17,12 @@ def app():
 
     with col1:
 
-        st.image(image_list[0:10], width=250)
+        st.image(image_list[0:30], width=275)
 
-    with col3:
-        st.image(image_list[11:20], width=250)
+
 
     with col5:
-        st.image(image_list[21:30], width=250)
+        st.image(image_list[31:60], width=275)
 
  
 
