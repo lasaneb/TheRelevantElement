@@ -5,6 +5,8 @@ import time
 import streamlit as st
 from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
+from selenium import webdriver
+import selenium
 news_api_key = os.getenv("news_api_key")
 
 
@@ -27,8 +29,8 @@ def app():
 ##############################################################################################################
 # Streamlit Integration #
 ##############################################################################################################
-# Initialize columns
-    col1, col2 = st.columns(2)
+# # Initialize columns
+#     col1, col2 = st.columns(2)
 
     st.title('Headlines')
 
@@ -38,38 +40,38 @@ def app():
             st.write('Here are the Headlines!')
             st.write(summary_top_headlines_df)
 
-            # Function to enable download of all headlines
-            @st.cache
-            def convert_df(df):
-            #Cache the conversion to prevent computation on every rerun
-                return df.to_csv().encode('utf-8')
-
-        all_headlines = convert_df(summary_top_headlines_df)
-
-        # Button to download the csv file
-        st.download_button(
-     label="Download Headlines",
-     data=all_headlines,
-     file_name='large_df.csv',
-     mime='text/csv',
- )
-    # Multi Select box to create custom list of headlines
-    options = st.multiselect(
+    chosen_headlines = st.multiselect(
             'Choose your Headlines',
         [summary_top_headlines_df['title'][i] for i in range(len(summary_top_headlines_df))],
         [])
 
-    st.write('You selected:', options)
-
-    # Button to download the custom csv file
-    st.download_button(
-     label="Download Headlines",
-     data=all_headlines,
-     file_name='large_df.csv',
-     mime='text/csv',
- )
+    st.write('You selected:', chosen_headlines)
 
     if st.button('Click here to open in browser!'):
         with st.spinner('Opening Headlines...'):
-            time.sleep(4)    
+            # Create webdriver
+            driver = webdriver.Chrome()
+            # Assign URL
+            first_url = summary_top_headlines_df.loc[summary_top_headlines_df['title'] == chosen_headlines[0], 'url']
+  
+            # New Url
+            new_urls = [chosen_headlines[1:]]
+
+            while True:
+                # Opening first url
+                driver.get(first_url)
+  
+            #Open a new window
+            driver.execute_script("window.open('');")
+  
+            #Switch to the new window and open new URL
+            driver.switch_to.window(driver.window_handles[1])
+            driver.get(new_urls[0])
+
+            driver.execute_script("window.open('');")
+            driver.switch_to.window(driver.window_handles[2])
+            driver.get(new_urls[1])
+            # time.sleep(4)
+
+  
 

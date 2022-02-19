@@ -36,15 +36,15 @@ def app():
 
             return said
     
-    element = get_audio()
+        element = get_audio()
     
-    show_elements.append(element)
+        show_elements.append(element)
 
-    st.write("The Current Element")
-    st.write(element)
+        st.write("The Current Element")
+        st.write(element)
 
-    # if st.button('Online Search'):
-    #     st.spinner('Searching for' + element)
-    #     helium.start_chrome('https://www.google.com/search?q=' + element)
+        if st.button('Online Search'):
+            st.spinner('Searching for' + element)
+            helium.start_chrome('https://www.google.com/search?q=' + element)
         
 

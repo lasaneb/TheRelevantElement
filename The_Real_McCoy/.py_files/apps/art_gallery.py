@@ -9,7 +9,7 @@ def app():
 
 
 
-    col1, col2, col3, = st.columns(4)
+    col1, col2, col3, = st.columns(3)
     image_list = []
     for filename in glob.glob('C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//WomboArtWorks//*.jpg'): # Gets only jpg files
         im=Image.open(filename)
@@ -23,7 +23,7 @@ def app():
         st.image(image_list[11:20], width=300)
 
     with col3:
-        st.image(image_list[11:30], width=300)
+        st.image(image_list[21:30], width=300)
 
  
 

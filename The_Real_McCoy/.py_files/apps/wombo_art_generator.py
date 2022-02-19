@@ -60,7 +60,7 @@ def app():
                 "Synthwave",
     ]
 
-        random_int_style = randint(0, len(art_styles))
+        random_int_style = randint(0, len(art_styles) - 1)
         description = st.text_input("Enter description")
         title = st.text_input("Enter title")
         
@@ -68,5 +68,6 @@ def app():
             st.write("Generating Art with Wombo...")
             create_wombo_art(description, title, art_styles[random_int_style])
             time.sleep(5)
-            st.image("C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//WomboArtWorks//" + title + ".jpg", width=350)
+            st.image("C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//WomboArtWorks//" + title + ".jpg")
+            #st.image(r"C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//WomboArtWorks//" + title + ".jpg", width=350)
             st.success("Art Generated!")
