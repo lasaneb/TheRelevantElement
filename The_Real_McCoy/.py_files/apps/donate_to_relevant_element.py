@@ -4,6 +4,9 @@ from web3 import Web3
 from pathlib import Path
 from dotenv import load_dotenv
 import streamlit as st
+from random import randint
+import glob
+from PIL import Image
 
 load_dotenv()
 
@@ -42,14 +45,19 @@ def app():
 ################################################################################
 # Streamlit Integration #
 ################################################################################
-
+    # Choose local account and amount to donate
     st.write("Choose an account to get started")
     accounts = w3.eth.accounts
     address = st.selectbox("Select Account", options=accounts)
     # Request input in Ether # The amount is actually in wei initially
     eth_amount = (st.number_input("Amount to send in Ether", min_value=0, max_value=100) * 10**18) #<-- convert to wei
-    # Convert to Ether
     
+    # Get current list of artworks from the gallery
+
+    image_list = []
+    for filename in glob.glob('C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//The_Real_McCoy//resources//Images//WomboArtWorks//*.jpg'): # Gets only jpg files
+        im=Image.open(filename)
+        image_list.append(im)
 
     st.markdown("---")
 
@@ -60,7 +68,8 @@ def app():
         tx_hash = contract.functions.deposit(
         ).transact({'from': address, 'value' : eth_amount, 'gas': 1000000})
         receipt = w3.eth.waitForTransactionReceipt(tx_hash)
-        st.write("Transaction receipt mined:")
+        st.write("Thank you for your donation!")
+        st.write("Here is the receipt:")
         st.write(dict(receipt))
         # if st.download_button("Download Transaction Receipt", receipt):
         #     st.write(dict(receipt))

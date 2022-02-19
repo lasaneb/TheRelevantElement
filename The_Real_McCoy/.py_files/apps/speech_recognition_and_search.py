@@ -5,6 +5,7 @@ import speech_recognition as sr
 from gtts import gTTS
 from helium import *
 import time
+from fpdf import FPDF
 
 
 
