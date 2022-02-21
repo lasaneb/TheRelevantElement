@@ -10,7 +10,6 @@ import flair
 from pathlib import Path
 from pathlib import Path
 from selenium.webdriver.chrome.options import Options
-#driver = webdriver.Chrome()
 
 
 ##############################################################################################################
@@ -25,36 +24,35 @@ def get_data():
     summary_articles_df = pd.read_csv(csv)
     #summary_articles_df_title_and_url = summary_articles_df[['title', 'description', 'url']]
     #return summary_top_headlines_df_title_and_url
-    driver = webdriver.Chrome()
 
 csv = Path("all_relevant_articles.csv")
 
-summary_articles_df_all = pd.read_csv(csv)
+summary_articles_df = pd.read_csv(csv)
 
-# article_sentiment_model = flair.models.TextClassifier.load('en-sentiment')
+article_sentiment_model = flair.models.TextClassifier.load('en-sentiment')
 
-#     # Initialize lists
+    # Initialize lists
 
-# article_sentiment = []
-# article_confidence = []
+article_sentiment = []
+article_confidence = []
 
-#         # Run Sentiment analysis on collected news sentences
+        # Run Sentiment analysis on collected news sentences
 
-# for sentence in summary_articles_df["description"]:
-#             # if sentence.strip() == "":
-#             #     article_confidence.append("")
-#             #     article_sentiment.append("")
+for sentence in summary_articles_df["description"]:
+            # if sentence.strip() == "":
+            #     article_confidence.append("")
+            #     article_sentiment.append("")
                 
-# # else:
-#     sample = flair.data.Sentence(sentence)
-# article_sentiment_model.predict(sample)
-# article_sentiment.append(sample.labels[0].value)
-# article_confidence.append(sample.labels[0].score)
+# else:
+    sample = flair.data.Sentence(sentence)
+article_sentiment_model.predict(sample)
+article_sentiment.append(sample.labels[0].value)
+article_confidence.append(sample.labels[0].score)
 
             # Add Results to Dataframe
 
-# summary_articles_df['sentiment'] = article_sentiment
-# summary_articles_df['confidence'] = article_confidence
+summary_articles_df['sentiment'] = article_sentiment
+summary_articles_df['confidence'] = article_confidence
 
 
 st.title("Get Useable Content")
@@ -67,9 +65,9 @@ threshold = st.slider('Set Threshold.', 0, 100, 80)
 sentiment = st.radio('Sentiment', ('POSITIVE', 'NEGATIVE'))
 threshold_percentage = threshold / 100
 
-summary_articles_df = summary_articles_df_all[summary_articles_df_all['sentiment'] == sentiment] 
+summary_articles_df = summary_articles_df[summary_articles_df['sentiment'] == sentiment] 
 summary_articles_df = summary_articles_df[summary_articles_df['confidence'] >= threshold_percentage]
-summary_articles_df = summary_articles_df[['title', 'url']]
+summary_articles_df = summary_articles_df[['source','description', 'title', 'url']]
 length = str(len(summary_articles_df)) 
 
 if st.button("Generate Articles"):
@@ -103,7 +101,7 @@ if st.button("Generate Articles"):
     #     st.write(chosen_articles)
 
 summary_articles_df_title_and_url = summary_articles_df[['title', 'url']]
-summary_top_headlines_df = summary_articles_df_all[['title', 'url']]
+summary_top_headlines_df = summary_articles_df[['title', 'url']]
 summary_articles_df_title_and_url.set_index('title', inplace=True, drop=False)
 
 chosen_headlines = st.multiselect(
@@ -114,23 +112,13 @@ chosen_headlines = st.multiselect(
 st.write('You selected:', chosen_headlines)
 
 if st.button('Click here to open in browser!'):
-     with st.spinner('Opening Articles...'):
+     with st.spinner('Opening Headlines...'):
         #Create webdriver
         driver = webdriver.Chrome()
         
         options = Options()
         options.page_load_strategy = 'eager'
         driver = webdriver.Chrome(options=options)
-
-index = 0
-for item in chosen_headlines:
-    url = summary_articles_df_title_and_url.loc[item]['url']
-    # Open new browser and go to first URL
-    driver.execute_script("window.open('');")
-    #Open a new tab
-    driver.switch_to.window(driver.window_handles[index])
-    driver.get(url)
-    index += 1
 
 
 # #         # Assign URL
