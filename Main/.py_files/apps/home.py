@@ -7,14 +7,23 @@ import time
 import streamlit as st
 from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
+from PIL import Image
+import base64
 
 
 def app():
 
-    st.title('Home')
+    st.title('Welcome to The Relevant Element')
 
-    st.markdown("Welcome to **The Relevant Element**")
-    st.markdown
+    ### gif from local file
+    file_ = open("C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//Main//resources//Images//element.gif", "rb")
+    contents = file_.read()
+    data_url = base64.b64encode(contents).decode("utf-8")
+    file_.close()
+    st.markdown(
+    f'<img src="data:image/gif;base64,{data_url}" alt="cat gif">',
+    unsafe_allow_html=True,
+    )
 
     def top_headlines():
         news_api_key = os.getenv("news_api_key")

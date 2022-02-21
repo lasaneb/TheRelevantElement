@@ -48,7 +48,7 @@ def app():
             helium.kill_browser() 
 
         ### gif from local file
-        file_ = open("C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//Main//resources//Images//cyote.gif", "rb")
+        file_ = open("C://Users//Airma//FinTechClass//Project_3_TheRelevantElement//Main//resources//Images//matrix.gif", "rb")
         contents = file_.read()
         data_url = base64.b64encode(contents).decode("utf-8")
         file_.close()

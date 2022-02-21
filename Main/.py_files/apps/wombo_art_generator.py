@@ -10,6 +10,9 @@ from random import randint
 from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
 import requests
+from pathlib import Path
+import pandas as pd
+import re
 word_site = "https://www.mit.edu/~ecprice/wordlist.10000"
 
 def app():
@@ -85,21 +88,43 @@ def app():
             
             response = requests.get(word_site)
             WORDS = response.content.splitlines()
+            
             useable_words = []
 
             for word in WORDS:
                 if len(word) > 5 and len(word) < 12:
-                    useable_words.append(word)
+                    useable_words.append(word)     
 
-            random_word_one = randint(0, len(useable_words) - 1)
-            random_word_two = randint(0, len(useable_words) - 1)
-            random_word_three = randint(0, len(useable_words) - 1)
+            random_word = str(useable_words[randint(0, len(useable_words) - 1)]).lower()
 
-            create_wombo_art(random_word_one + 
-                                random_word_two + 
-                                random_word_three, 
-                                random_word_one, 
-                                art_styles[random_int_style])
+            create_wombo_art(random_word, 
+                            random_word, 
+                            art_styles[random_int_style]) 
+
+        # Generate an Art from headlines
+        if st.button("Generate from an article"):
+            st.spinner("Randomizing...")
+            time.sleep(2)
+            st.spinner("Generating Art with Wombo...")
+            time.sleep(2)
+
+            # Load all articles
+            csv = Path("all_relevant_articles.csv")
+            summary_articles_df = pd.read_csv(csv)
+            random_number = randint(0, len(summary_articles_df) - 1)
+
+            
+            random_article = re.split('\s+', summary_articles_df.iloc[random_number]['title'])
+            word_one_from_article = random_article[randint(0, len(random_article) - 1)]
+            word_two_from_article = random_article[randint(0, len(random_article) - 1)]
+            word_three_from_article = random_article[randint(0, len(random_article) - 1)]
+            random_int_style = randint(0, len(art_styles) - 1)
+            
+            create_wombo_art(word_one_from_article + " " 
+                            + word_two_from_article + " " 
+                            + word_three_from_article, 
+                            word_one_from_article,
+                            art_styles[random_int_style])
 
 
 
