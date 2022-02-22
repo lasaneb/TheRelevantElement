@@ -55,6 +55,16 @@ __Wombo.Art__
 __Revenue Generation__
 <p>_Solidity_, _REMIX_, _Ganache_, and _MetaMask_ were used to implement our revenue generating functions. The owenr of the application will be to collect donations for digital wallets.
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+![Donation_WalkThru](https://user-images.githubusercontent.com/89284547/155192857-ab1ec42d-ac8c-4035-8182-cc9456e1c925.mp4)
+=======
+
+## Project Challenges 
+
+<p> Andrew H. encountered an issue when installing the Flair module. This resulted in his inability to run sentiment analysis on the dataframe that contained the articles. The solution to this was to provide him with a pre-generated datafrom where the sentiment analysis was already performed and stored in new columns. Andrew M initially encountered the issue of displaying multiple tabs within the streamlit application. The solution was to use starter code found by using an internet search for any open source code that would accomplish this function. Starter code was found and enhanced to show tabs displayed as radio buttons on the sidebar.
+>>>>>>> 93f0687b17ed35bf30c15637fe082552d4657e97
 
 ![Donation_WalkThru](https://user-images.githubusercontent.com/89284547/155192857-ab1ec42d-ac8c-4035-8182-cc9456e1c925.mp4)
 
