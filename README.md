@@ -61,7 +61,7 @@ _Solidity_, _REMIX_, _Ganache_, and _MetaMask_ were used to implement our revenu
 
 ## Project Challenges 
 
-<p> Andrew H. encountered an issue when installing the Flair module. This resulted in the inability to run sentiment analysis on the dataframe that contained the articles. The solution to this was to provide him with a pre-generated datafrom where the sentiment analysis was already performed and stored in new columns. Andrew M initially encountered the issue of displaying multiple tabs within the streamlit application. The solution was to use starter code found by using an internet search for any open source code that would accomplish this function. Starter code was found and enhanced to show tabs displayed as radio buttons on the sidebar.
+<p> Andrew H. encountered an issue when installing the Flair module. This resulted in his inability to run sentiment analysis on the dataframe that contained the articles. The solution to this was to provide him with a pre-generated datafrom where the sentiment analysis was already performed and stored in new columns. Andrew M initially encountered the issue of displaying multiple tabs within the streamlit application. The solution was to use starter code found by using an internet search for any open source code that would accomplish this function. Starter code was found and enhanced to show tabs displayed as radio buttons on the sidebar.
 
   
 ## Further Development
