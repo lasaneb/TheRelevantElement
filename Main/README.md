@@ -2,7 +2,7 @@
 
 ## Ideas
 
-<p> Create an app that get articles and stories based on user preferences. Use google text to speech to have user build base relevant element narrative
+<p> Create an app that get articles and stories based on user preferences. 
 <p> Filter by user preferences: positive, negative, person, place or thing, sentiment using flair
 <p> Summarize and deliver summary and link.
   
