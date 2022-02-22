@@ -8,7 +8,7 @@ from newsapi.newsapi_client import NewsApiClient
 # from pathlib import Path
 # from selenium.webdriver.chrome.options import Options
 # from selenium import webdriver
-news_api_key = os.getenv("news_api_key")
+# news_api_key = os.getenv("news_api_key")
 
 
 
