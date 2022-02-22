@@ -4,10 +4,10 @@ import time
 import streamlit as st
 from newsapi import NewsApiClient
 from newsapi.newsapi_client import NewsApiClient
-from selenium import webdriver
-from pathlib import Path
-from selenium.webdriver.chrome.options import Options
-from selenium import webdriver
+# from selenium import webdriver
+# from pathlib import Path
+# from selenium.webdriver.chrome.options import Options
+# from selenium import webdriver
 news_api_key = os.getenv("news_api_key")
 
 
@@ -15,7 +15,7 @@ news_api_key = os.getenv("news_api_key")
 @st.cache(allow_output_mutation=True)
 def top_headlines():
         #news_api_key = os.getenv("news_api_key")
-        newsapi = NewsApiClient(api_key="6979450998b44ae483661232ae2c1fd3")
+        newsapi = NewsApiClient(api_key= st.secrets['news_api_key'])
         top_articles = newsapi.get_top_headlines(country="us", language='en')
 
         return top_articles
