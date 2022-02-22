@@ -27,9 +27,9 @@ def app():
         return relevant_articles
 
 
-    all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword", "article_sentiment", "article_confidence"])
+    all_relevant_articles = pd.DataFrame(columns = ["source", "author",	"title", "description",	"url","urlToImage", "publishedAt", "content", "keyword", "sentiment", "confidence"])
 
-    keywords = ['Helping', 'Forgiveness', 'Positive']
+    keywords = ['Helping', 'Forgiveness', 'Freedom']
 
     for word in keywords:
             relevant_articles = scan_for_articles(word)
