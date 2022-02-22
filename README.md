@@ -6,7 +6,7 @@ Our creation deals heavily with process atomization, data categorization, and an
 
 ## The Challenge
 
-Our client, a talk show radio host is interested in a more time efficient and effective way to research daily content to discuss with his listeners. Our client has the daily task of searching the internet and sorting through thousands of articles for relevant content to discuss. We were presented with the challenge of creating a way to automate this process for the sake of time efficiency. Our client also is interested in generating social media content for further listener engagement when off air. 
+Our client, a talk show radio host, is interested in a more time efficient and effective way to research daily content to discuss with his listeners. Our client has the daily task of searching the internet and sorting through thousands of articles for relevant content to discuss. We were presented with the challenge of creating a way to automate this process for the sake of time efficiency. Our client also is interested in generating social media content for further listener engagement when off air. 
 
 ## The Solution
 
