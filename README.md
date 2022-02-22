@@ -47,11 +47,15 @@ The _Flair_ module was then used to assign a grade of confidence to the setiment
 
 ![Flair_Csv](https://user-images.githubusercontent.com/89284547/155066114-522342ec-cbf3-4772-bf40-b5be25a9007e.png)
 
+__Wombo.Art__
+_Wombo.Art_ was used to generate our art collection for soccial media post and engagement.
+
+![Wombo](https://user-images.githubusercontent.com/89284547/155226817-ee06249f-69f5-4167-ac0c-1f412c5e0820.mp4)
+
 __Revenue Generation__
 _Solidity_, _REMIX_, _Ganache_, and _MetaMask_ were used to implement our revenue generating functions. The owenr of the application will be to collect donations for digital wallets.
 
-
-__Wombo.Art__
+![Donation_WalkThru](https://user-images.githubusercontent.com/89284547/155192857-ab1ec42d-ac8c-4035-8182-cc9456e1c925.mp4)
 
 
 __Backend Functionality__
