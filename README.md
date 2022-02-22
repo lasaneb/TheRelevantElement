@@ -2,7 +2,7 @@
 
 ## Executive Summery
 
-Our creation deals heavily with process atomization, data categorization, and analyzation. These three components are essential to the world of FinTech. Using Natural Language Processing modules to better understand data and make actionable decisions with the information obtained to possibly capitalize on investment opportunities, increase market share, or to better serve clients is what Fintech is all about. We have also integrated the means to conduct financial transactions using digital wallets and cryptocurrencies. 
+Our creation deals heavily with process automization, data categorization, and analyzation. These three components are essential to the world of FinTech. Using Natural Language Processing modules to better understand data and make actionable decisions with the information obtained to possibly capitalize on investment opportunities, increase market share, or to better serve clients is what Fintech is all about. We have also integrated the means to conduct financial transactions using digital wallets and cryptocurrencies. 
 
 ## The Challenge
 
@@ -55,18 +55,8 @@ __Wombo.Art__
 __Revenue Generation__
 <p>_Solidity_, _REMIX_, _Ganache_, and _MetaMask_ were used to implement our revenue generating functions. The owenr of the application will be to collect donations for digital wallets.
 
-<
 ![Donation_WalkThru](https://user-images.githubusercontent.com/89284547/155192857-ab1ec42d-ac8c-4035-8182-cc9456e1c925.mp4)
 
-## Project Challenges 
-
-<p> Andrew H. encountered an issue when installing the Flair module. This resulted in his inability to run sentiment analysis on the dataframe that contained the articles. The solution to this was to provide him with a pre-generated datafrom where the sentiment analysis was already performed and stored in new columns. Andrew M initially encountered the issue of displaying multiple tabs within the streamlit application. The solution was to use starter code found by using an internet search for any open source code that would accomplish this function. Starter code was found and enhanced to show tabs displayed as radio buttons on the sidebar.
-
-
-__Backend Functionality__
-Shutil
-Selenium / Helium
-Glob
 
 ## Project Challenges 
 
@@ -74,4 +64,4 @@ Glob
 
   
 ## Further Development
-<p> Further development will be primarily driven by client input. Input fields will be added to allow the client to run article searches with different keywords. The app will also be deployed usingthe streamlit cloud. The bank account smart contract will be deployed to the Ethereum Mainnet. The artworks will be used to mint and sell NFTs. A web hosting service such as GoDaddy.com will be used to buy a domain. A website builder such as Wix.com in conjuction with the deployed streamlit app will be used to further enhance the front-end client interface. The client and development team will enhance the monitization by requiring a donation each time a new set of articles is requested. Alternativly, the team will consider a monthly subscription service as the primary method to monitize this service.
+<p> Further development will be primarily driven by client input. Input fields will be added to allow the client to run article searches with different keywords. The app will also be deployed using the streamlit cloud. The bank account smart contract will be deployed to the Ethereum Mainnet. The artworks will be used to mint and sell NFTs. A web hosting service such as GoDaddy.com will be used to buy a domain. A website builder such as Wix.com in conjunction with the deployed streamlit app will be used to further enhance the front-end client interface. The client and development team will enhance the monetization by requiring a donation each time a new set of articles is requested. Alternatively, the team will consider a monthly subscription service as the primary method to monetize this service.
