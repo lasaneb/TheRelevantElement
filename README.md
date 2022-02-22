@@ -51,6 +51,14 @@ __Revenue Generation__
 _Solidity_, _REMIX_, _Ganache_, and _MetaMask_ were used to implement our revenue generating functions. The owenr of the application will be to collect donations for digital wallets.
 
 
+## Project Challenges 
+
+<p> Andrew H. encountered an issue when installing the Flair module. This resulted in the inability to run sentiment analysis on the dataframe that contained the articles. The solution to this was to provide him with a pre-generated datafrom where the sentiment analysis was already performed and stored in new columns. Andrew M initially encountered the issue of displaying multiple tabs within the streamlit application. The solution was to use starter code found by using an internet search for any open source code that would accomplish this function. Starter code was found and enhanced to show tabs displayed as radio buttons on the sidebar.
+
+  
+## Further Development
+<p> Further development will be primarily driven by client input. Input fields will be added to allow the client to run article searches with different keywords. The app will also be deployed usingthe streamlit cloud. The bank account smart contract will be deployed to the Ethereum Mainnet. The artworks will be used to mint and sell NFTs. A web hosting service such as GoDaddy.com will be used to buy a domain. A website builder such as Wix.com in conjuction with the deployed streamlit app will be used to further enhance the front-end client interface. The client and development team will enhance the monitization by requiring a donation each time a new set of articles is requested. Alternativly, the team will consider a monthly subscription service as the primary method to monitize this service.
+  
 __Wombo.Art__
 
 
