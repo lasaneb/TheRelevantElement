@@ -28,7 +28,7 @@ def app():
             contract_abi = json.load(f)
 
         # Set the contract address (this is the address of the deployed contract)
-        contract_address = "0xf21f86C3f0dD74299754FFAD00A248228f1f3c7f"
+        contract_address = "0xc25f93c503f85B9d31302fBb20526DF5cB7B0e39"
 
         # Get the contract
         contract = w3.eth.contract(
